@@ -28,7 +28,7 @@ jobs:
       - name: Set environment variables
         run: |
           echo "WEB_IMAGE=ghcr.io/bader-ht/web" >> $GITHUB_ENV
-          echo "NGINX_IMAGE=ghcr.io/bader-ht/nginx )" >> $GITHUB_ENV
+          echo "NGINX_IMAGE=ghcr.io/bader-ht/nginx" >> $GITHUB_ENV
       - name: Log in to GitHub Packages
         run: echo ${PERSONAL_ACCESS_TOKEN} | docker login ghcr.io -u ${{ secrets.NAMESPACE }} --password-stdin
         env:
