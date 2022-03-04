@@ -3,8 +3,8 @@ name: Continuous Integration and Delivery
 on: [push]
 
 env:
-  WEB_IMAGE: ghcr.io/bader-ht/testing-github-actions/web
-  NGINX_IMAGE: ghcr.io/bader-ht/testing-github-actions/nginx
+  WEB_IMAGE: ghcr.io/$(echo $GITHUB_REPOSITORY | tr '[:upper:]' '[:lower:]')/web
+  NGINX_IMAGE: ghcr.io/$(echo $GITHUB_REPOSITORY | tr '[:upper:]' '[:lower:]')/nginx
 
 
 jobs:
@@ -28,8 +28,8 @@ jobs:
           echo SQL_PORT=${{ secrets.SQL_PORT }} >> .env
       - name: Set environment variables
         run: |
-          echo "WEB_IMAGE=ghcr.io/bader-ht/web" >> $GITHUB_ENV
-          echo "NGINX_IMAGE=ghcr.io/bader-ht/nginx" >> $GITHUB_ENV
+          echo "WEB_IMAGE=$(echo ${{env.WEB_IMAGE}} )" >> $GITHUB_ENV
+          echo "NGINX_IMAGE=$(echo ${{env.NGINX_IMAGE}} )" >> $GITHUB_ENV
       - name: Log in to GitHub Packages
         run: echo ${PERSONAL_ACCESS_TOKEN} | docker login ghcr.io -u ${{ secrets.NAMESPACE }} --password-stdin
         env:
