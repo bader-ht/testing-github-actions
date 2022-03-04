@@ -3,8 +3,9 @@ name: Continuous Integration and Delivery
 on: [push]
 
 env:
-  WEB_IMAGE: ghcr.io/bader-ht/web
-  NGINX_IMAGE: ghcr.io/bader-ht/nginx
+  WEB_IMAGE: ghcr.io/bader-ht/testing-github-actions/web
+  NGINX_IMAGE: ghcr.io/bader-ht/testing-github-actions/nginx
+
 
 jobs:
 
