@@ -94,6 +94,7 @@ jobs:
         export ALLOWED_HOSTS=localhost
         export GITHUB_WORKFLOW=True
         export MODE=workflow
+        cd app
         python manage.py makemigrations
         python manage.py migrate
         python manage.py migrate --run-syncdb
